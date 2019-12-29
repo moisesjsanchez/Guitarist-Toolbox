@@ -1,4 +1,7 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, Blueprint
+from Guitarist_Toolbox import db
+
+api = Blueprint('api', __name__)
 
 #get all music information
 '''
@@ -9,7 +12,7 @@ def get_information():
 '''
 
 '''
-@app.route('/music-info/chords', methods=['GET'])
+@app.route('/music-info/chord', methods=['GET'])
 def get_chords():
     request.get_json()
     music_info = MusicInfo()
@@ -23,7 +26,7 @@ def get_chords():
 '''
 
 '''
-@app.route('/music-info/time', methods=['GET'])
+@app.route('/music-info/time-signature', methods=['GET'])
 def get_chords():
     request.get_json()
     music_info = MusicInfo()
@@ -38,7 +41,7 @@ def get_chords():
 
 #get a single musical information
 '''
-@app.route('/music-info/chord/<chords>', methods=['GET'])
+@app.route('/music-info/chord/<chord>', methods=['GET'])
 def get_chords():
     request.get_json()
     music_info = MusicInfo()
@@ -52,14 +55,14 @@ def get_chords():
 '''
 
 '''
-@app.route('/music-info/time/<time>', methods=['GET'])
+@app.route('/music-info/time-signature/<time-signature>', methods=['GET'])
 def get_chords():
     request.get_json()
     music_info = MusicInfo()
 '''
 
 '''
-@app.route('/music-info/scales/<scales>', methods=['GET'])
+@app.route('/music-info/scale/<scale>', methods=['GET'])
 def get_chords():
     request.get_json()
     music_info = MusicInfo()
