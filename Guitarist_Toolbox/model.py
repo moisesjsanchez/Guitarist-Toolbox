@@ -15,3 +15,4 @@ class Time(db.Model):
 class Technique(db.Model):
     id = db.Column(db.String, primary_key=True)
     technique = db.Column(db.String, nullable=False)
+    tech_type = db.Column(db.String) 
