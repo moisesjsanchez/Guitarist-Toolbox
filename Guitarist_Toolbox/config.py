@@ -1,10 +1,9 @@
 import os 
-
-basedir = os.path.abspath(os.path.dirname(__file__))
+from Guitarist_Toolbox.var import my_postgres
 
 class BaseConfig(object):
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
+    SQLALCHEMY_DATABASE_URI = my_postgres
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 class TestConfig(BaseConfig):

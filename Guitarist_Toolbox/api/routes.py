@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request, Blueprint
 from Guitarist_Toolbox import db
+from Guitarist_Toolbox.model import Chord,Scale,Time,Technique
 
 api = Blueprint('api', __name__)
 
