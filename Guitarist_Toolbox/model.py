@@ -11,6 +11,7 @@ class Scale(db.Model):
 class Time(db.Model):
     id = db.Column(db.String, primary_key=True)
     time_signature = db.Column(db.String, nullable=False)
+    time_type = db.Column(db.String)
 
 class Technique(db.Model):
     id = db.Column(db.String, primary_key=True)
