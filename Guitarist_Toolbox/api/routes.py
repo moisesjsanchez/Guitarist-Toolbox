@@ -1,10 +1,10 @@
 from flask import Flask, jsonify, request, Blueprint
 from Guitarist_Toolbox import db
-from Guitarist_Toolbox.model import Chord,Scale,Time,Technique
+from Guitarist_Toolbox.model import Chord, Scale, Time, Technique
 
 api = Blueprint('api', __name__)
 
-#get all music information
+# get all music information
 @api.route('/music-info/all', methods=['GET'])
 def get_all():
     music_info = request.get_json()
@@ -36,8 +36,9 @@ def get_all():
         all_times['Time Signature'] = time.time_signature
         all_times['Type'] = time.time_type
         output.append(all_times)
-    
+
     return jsonify({'Whole Toolbox': output}), 200
+
 
 @api.route('/music-info/chords', methods=['GET'])
 def get_chords():
@@ -49,8 +50,9 @@ def get_chords():
         all_chords = {}
         all_chords['Chord'] = chord.chord
         output.append(all_chords)
-    
+
     return jsonify({'Chord Progressions': output}), 200
+
 
 @api.route('/music-info/scales', methods=['GET'])
 def get_scales():
@@ -62,8 +64,9 @@ def get_scales():
         all_scales = {}
         all_scales['Scale'] = scale.scale
         output.append(all_scales)
-    
+
     return jsonify({'Scales': output}), 200
+
 
 @api.route('/music-info/technique', methods=['GET'])
 def get_technique():
@@ -76,8 +79,9 @@ def get_technique():
         all_technique['Technique'] = technique.technique
         all_technique['Type'] = technique.tech_type
         output.append(all_technique)
-    
+
     return jsonify({'Techniques': output}), 200
+
 
 @api.route('/music-info/time', methods=['GET'])
 def get_time():
@@ -89,10 +93,11 @@ def get_time():
         all_times['Time Signature'] = time.time_signature
         all_times['Type'] = time.time_type
         output.append(all_times)
-    
+
     return jsonify({'Time Signatues': output}), 200
 
-#get a single musical information by critera
+# get a single musical information by critera
+
 
 @api.route('/music-info/technique/tech_type/both', methods=['GET'])
 def get_both():
@@ -104,9 +109,10 @@ def get_both():
         all_technique = {}
         all_technique['Technique'] = tech_type.technique
         all_technique['Type'] = tech_type.tech_type
-        output.append(all_technique)                          
-    
+        output.append(all_technique)
+
     return jsonify({'Techniques': output}), 200
+
 
 @api.route('/music-info/technique/tech_type/electric', methods=['GET'])
 def get_electric():
@@ -118,9 +124,10 @@ def get_electric():
         all_technique = {}
         all_technique['Technique'] = tech_type.technique
         all_technique['Type'] = tech_type.tech_type
-        output.append(all_technique)                          
-    
+        output.append(all_technique)
+
     return jsonify({'Techniques': output}), 200
+
 
 @api.route('/music-info/technique/tech_type/acoustic', methods=['GET'])
 def get_acoustic():
@@ -132,9 +139,10 @@ def get_acoustic():
         all_technique = {}
         all_technique['Technique'] = tech_type.technique
         all_technique['Type'] = tech_type.tech_type
-        output.append(all_technique)                          
-    
+        output.append(all_technique)
+
     return jsonify({'Techniques': output}), 200
+
 
 '''
 @app.route('/music-info/technique'/<technique>', methods=['GET'])
@@ -143,7 +151,7 @@ def get_chords():
     music_info = MusicInfo()
 '''
 
-#get random music information based on column selected
+# get random music information based on column selected
 
 '''
 @app.route('/music-info/time-signature/<time-signature>', methods=['GET'])
