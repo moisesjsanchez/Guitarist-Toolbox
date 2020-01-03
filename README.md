@@ -68,9 +68,9 @@ https://Guitarist-Toolbox.herokudns.com/music-info/music-info/chord
 #### Response
 
 ```ts
-		{
-			"Chord":string
-		}
+	{
+		"Chord":string
+	}
 ```
 
 ### Advanced Queries of Tools
@@ -93,10 +93,10 @@ https://Guitarist-Toolbox.herokudns.com/music-info/music-info/time/tech_type/<ty
 #### Response
 
 ```ts
-		{
-			"Time Signature":string,
-			"Type": string
-		}
+	{
+		"Time Signature":string,
+		"Type": string
+	}
 ```
 ## Contributing
 
