@@ -2,7 +2,6 @@ import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate, MigrateCommand
-from flask_script import Manager
 from Guitarist_Toolbox.config import DevelopmentConfig
 
 db = SQLAlchemy()
