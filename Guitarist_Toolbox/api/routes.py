@@ -1,5 +1,4 @@
-from flask import Flask, jsonify, request, Blueprint
-from Guitarist_Toolbox import db
+from flask import jsonify, Blueprint
 from Guitarist_Toolbox.model import Chord, Scale, Time, Technique
 
 api = Blueprint('api', __name__)
@@ -7,7 +6,6 @@ api = Blueprint('api', __name__)
 # get all music information
 @api.route('/music-info/all', methods=['GET'])
 def get_all():
-    music_info = request.get_json()
     chords = Chord.query.all()
     scales = Scale.query.all()
     techniques = Technique.query.all()
@@ -42,7 +40,6 @@ def get_all():
 
 @api.route('/music-info/chords', methods=['GET'])
 def get_chords():
-    music_info = request.get_json()
     chords = Chord.query.all()
 
     output = []
@@ -56,7 +53,6 @@ def get_chords():
 
 @api.route('/music-info/scales', methods=['GET'])
 def get_scales():
-    music_info = request.get_json()
     scales = Scale.query.all()
 
     output = []
@@ -70,7 +66,6 @@ def get_scales():
 
 @api.route('/music-info/technique', methods=['GET'])
 def get_technique():
-    music_info = request.get_json()
     techniques = Technique.query.all()
 
     output = []
@@ -144,25 +139,75 @@ def get_acoustic():
     return jsonify({'Techniques': output}), 200
 
 
-'''
-@app.route('/music-info/technique'/<technique>', methods=['GET'])
-def get_chords():
-    request.get_json()
-    music_info = MusicInfo()
-'''
+@api.route('/music-info/time/time_type/simple', methods=['GET'])
+def get_simple():
+    current_time_type = Time.query.filter_by(tech_type='Acoustic')
+
+    output = []
+
+    for time_type in current_time_type:
+        all_time_signature = {}
+        all_time_signature['Time Signature'] = time_type.time_signature
+        all_time_signature['Type'] = time_type.time_type
+        output.append(all_time_signature)
+
+    return jsonify({'Time Signatures': output}), 200
+
+
+@api.route('/music-info/time/time_type/compound', methods=['GET'])
+def get_compound():
+    current_time_type = Technique.query.filter_by(tech_type='Compound')
+
+    output = []
+
+    for time_type in current_time_type:
+        all_time_signature = {}
+        all_time_signature['Time Signature'] = time_type.time_signature
+        all_time_signature['Type'] = time_type.time_type
+        output.append(all_time_signature)
+
+    return jsonify({'Time Signatures': output}), 200
+
+
+@api.route('/music-info/time/time_type/complex', methods=['GET'])
+def get_complex():
+    current_time_type = Technique.query.filter_by(tech_type='Complex')
+
+    output = []
+
+    for time_type in current_time_type:
+        all_time_signature = {}
+        all_time_signature['Time Signature'] = time_type.time_signature
+        all_time_signature['Type'] = time_type.time_type
+        output.append(all_time_signature)
+
+    return jsonify({'Time Signatures': output}), 200
+
 
 # get random music information based on column selected
-
-'''
-@app.route('/music-info/time-signature/<time-signature>', methods=['GET'])
-def get_chords():
-    request.get_json()
-    music_info = MusicInfo()
 '''
 
+@app.route('/music-info/scale/random', methods=['GET'])
+def get_random_chord():
+
 '''
-@app.route('/music-info/scale/<scale>', methods=['GET'])
-def get_chords():
-    request.get_json()
-    music_info = MusicInfo()
+
+'''
+
+@app.route('/music-info/scale/random', methods=['GET'])
+def get_random_scale():
+
+'''
+
+'''
+
+@app.route('/music-info/technique/random', methods=['GET'])
+def get_random_technique():
+
+'''
+
+'''
+@app.route('/music-info/time-signature/random', methods=['GET'])
+def get_random_chord():
+
 '''
