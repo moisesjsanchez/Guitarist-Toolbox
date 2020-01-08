@@ -82,7 +82,7 @@ Some columns have more than one parameter that be selected. Currently technique 
 | param    | type     | Description                                                  |
 | :------- | :------- | :----------------------------------------------------------- |
 | technique/tech_type/<type\>  | `String` | Filters based on technique type: electric, acoustic, both        |
-| time/tech_type/<type\>  | `String` | Filters based on time signature type: common, compound, complex     |
+| time/time_type/<type\>  | `String` | Filters based on time signature type: common, compound, complex     |
 
 #### Request
 
