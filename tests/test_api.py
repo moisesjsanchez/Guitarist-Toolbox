@@ -35,11 +35,11 @@ class APITestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_get_tech_electric(self):
-        response = self.client.get('/music-info/tech_type/electric')
+        response = self.client.get('/music-info/technique/tech_type/electric')
         self.assertEqual(response.status_code, 200)
 
     def test_get_tech_acoustic(self):
-        response = self.client.get('/music-info/tech_type/acoustic')
+        response = self.client.get('/music-info/technique/tech_type/acoustic')
         self.assertEqual(response.status_code, 200)
 
     def test_get_tech_simple(self):
