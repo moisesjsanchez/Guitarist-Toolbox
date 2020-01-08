@@ -141,7 +141,7 @@ def get_acoustic():
 
 @api.route('/music-info/time/time_type/simple', methods=['GET'])
 def get_simple():
-    current_time_type = Time.query.filter_by(tech_type='Acoustic')
+    current_time_type = Time.query.filter_by(time_type='Acoustic')
 
     output = []
 
@@ -156,7 +156,7 @@ def get_simple():
 
 @api.route('/music-info/time/time_type/compound', methods=['GET'])
 def get_compound():
-    current_time_type = Technique.query.filter_by(tech_type='Compound')
+    current_time_type = Time.query.filter_by(time_type='Compound')
 
     output = []
 
@@ -171,7 +171,7 @@ def get_compound():
 
 @api.route('/music-info/time/time_type/complex', methods=['GET'])
 def get_complex():
-    current_time_type = Technique.query.filter_by(tech_type='Complex')
+    current_time_type = Time.query.filter_by(time_type='Complex')
 
     output = []
 
