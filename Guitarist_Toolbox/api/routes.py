@@ -1,5 +1,6 @@
 from flask import jsonify, Blueprint
 from Guitarist_Toolbox.model import Chord, Scale, Time, Technique
+import random
 
 api = Blueprint('api', __name__)
 
@@ -35,7 +36,7 @@ def get_all():
         all_times['Type'] = time.time_type
         output.append(all_times)
 
-    return jsonify({'Whole Toolbox': output}), 200
+    return jsonify(output), 200
 
 
 @api.route('/music-info/chords', methods=['GET'])
@@ -48,7 +49,7 @@ def get_chords():
         all_chords['Chord'] = chord.chord
         output.append(all_chords)
 
-    return jsonify({'Chord Progressions': output}), 200
+    return jsonify(output), 200
 
 
 @api.route('/music-info/scales', methods=['GET'])
@@ -61,10 +62,10 @@ def get_scales():
         all_scales['Scale'] = scale.scale
         output.append(all_scales)
 
-    return jsonify({'Scales': output}), 200
+    return jsonify(output), 200
 
 
-@api.route('/music-info/technique', methods=['GET'])
+@api.route('/music-info/techniques', methods=['GET'])
 def get_technique():
     techniques = Technique.query.all()
 
@@ -75,10 +76,10 @@ def get_technique():
         all_technique['Type'] = technique.tech_type
         output.append(all_technique)
 
-    return jsonify({'Techniques': output}), 200
+    return jsonify(output), 200
 
 
-@api.route('/music-info/time', methods=['GET'])
+@api.route('/music-info/times', methods=['GET'])
 def get_time():
     times = Time.query.all()
 
@@ -89,12 +90,12 @@ def get_time():
         all_times['Type'] = time.time_type
         output.append(all_times)
 
-    return jsonify({'Time Signatues': output}), 200
+    return jsonify(output), 200
 
 # get a single musical information by critera
 
 
-@api.route('/music-info/technique/tech_type/both', methods=['GET'])
+@api.route('/music-info/techniques/both', methods=['GET'])
 def get_both():
     current_tech_type = Technique.query.filter_by(tech_type='Both')
 
@@ -106,10 +107,10 @@ def get_both():
         all_technique['Type'] = tech_type.tech_type
         output.append(all_technique)
 
-    return jsonify({'Techniques': output}), 200
+    return jsonify(output), 200
 
 
-@api.route('/music-info/technique/tech_type/electric', methods=['GET'])
+@api.route('/music-info/techniques/electric', methods=['GET'])
 def get_electric():
     current_tech_type = Technique.query.filter_by(tech_type='Electric')
 
@@ -121,10 +122,10 @@ def get_electric():
         all_technique['Type'] = tech_type.tech_type
         output.append(all_technique)
 
-    return jsonify({'Techniques': output}), 200
+    return jsonify(output), 200
 
 
-@api.route('/music-info/technique/tech_type/acoustic', methods=['GET'])
+@api.route('/music-info/techniques/acoustic', methods=['GET'])
 def get_acoustic():
     current_tech_type = Technique.query.filter_by(tech_type='Acoustic')
 
@@ -136,10 +137,10 @@ def get_acoustic():
         all_technique['Type'] = tech_type.tech_type
         output.append(all_technique)
 
-    return jsonify({'Techniques': output}), 200
+    return jsonify(output), 200
 
 
-@api.route('/music-info/time/time_type/simple', methods=['GET'])
+@api.route('/music-info/times/simple', methods=['GET'])
 def get_simple():
     current_time_type = Time.query.filter_by(time_type='Acoustic')
 
@@ -151,10 +152,10 @@ def get_simple():
         all_time_signature['Type'] = time_type.time_type
         output.append(all_time_signature)
 
-    return jsonify({'Time Signatures': output}), 200
+    return jsonify(output), 200
 
 
-@api.route('/music-info/time/time_type/compound', methods=['GET'])
+@api.route('/music-info/times/compound', methods=['GET'])
 def get_compound():
     current_time_type = Time.query.filter_by(time_type='Compound')
 
@@ -166,10 +167,10 @@ def get_compound():
         all_time_signature['Type'] = time_type.time_type
         output.append(all_time_signature)
 
-    return jsonify({'Time Signatures': output}), 200
+    return jsonify(output), 200
 
 
-@api.route('/music-info/time/time_type/complex', methods=['GET'])
+@api.route('/music-info/times/complex', methods=['GET'])
 def get_complex():
     current_time_type = Time.query.filter_by(time_type='Complex')
 
@@ -181,33 +182,59 @@ def get_complex():
         all_time_signature['Type'] = time_type.time_type
         output.append(all_time_signature)
 
-    return jsonify({'Time Signatures': output}), 200
+    return jsonify(output), 200
 
 
 # get random music information based on column selected
-'''
+@api.route('/music-info/chords/random', methods=['GET'])
+def get_random_chords():
+    chords = Chord.query.all()
 
-@app.route('/music-info/scale/random', methods=['GET'])
-def get_random_chord():
+    output = []
+    for chord in chords:
+        all_chords = {}
+        all_chords['Chord'] = chord.chord
+        output.append(all_chords)
 
-'''
+    return jsonify(random.choice(output)), 200
 
-'''
 
-@app.route('/music-info/scale/random', methods=['GET'])
-def get_random_scale():
+@api.route('/music-info/scales/random', methods=['GET'])
+def get_random_scales():
+    scales = Scale.query.all()
 
-'''
+    output = []
+    for scale in scales:
+        all_scales = {}
+        all_scales['Scale'] = scale.scale
+        output.append(all_scales)
 
-'''
+    return jsonify(random.choice(output)), 200
 
-@app.route('/music-info/technique/random', methods=['GET'])
+
+@api.route('/music-info/techniques/random', methods=['GET'])
 def get_random_technique():
+    techniques = Technique.query.all()
 
-'''
+    output = []
+    for technique in techniques:
+        all_technique = {}
+        all_technique['Technique'] = technique.technique
+        all_technique['Type'] = technique.tech_type
+        output.append(all_technique)
 
-'''
-@app.route('/music-info/time-signature/random', methods=['GET'])
-def get_random_chord():
+    return jsonify(random.choice(output)), 200
 
-'''
+
+@api.route('/music-info/times/random', methods=['GET'])
+def get_random_time():
+    times = Time.query.all()
+
+    output = []
+    for time in times:
+        all_times = {}
+        all_times['Time Signature'] = time.time_signature
+        all_times['Type'] = time.time_type
+        output.append(all_times)
+
+    return jsonify(random.choice(output)), 200
