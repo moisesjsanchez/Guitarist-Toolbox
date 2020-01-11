@@ -12,6 +12,7 @@ flask-testing = "*"
 pep8 = "*"
 flask-migrate = "*"
 psycopg2-binary = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.7"
