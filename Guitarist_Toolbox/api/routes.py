@@ -1,8 +1,13 @@
-from flask import jsonify, Blueprint
+from flask import jsonify, Blueprint, render_template
 from Guitarist_Toolbox.model import Chord, Scale, Time, Technique
 import random
 
 api = Blueprint('api', __name__)
+
+# homepage with information about API service
+@api.route('/')
+def index():
+    return render_template('index.html')
 
 # get all music information
 @api.route('/music-info/all', methods=['GET'])
