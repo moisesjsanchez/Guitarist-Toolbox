@@ -6,15 +6,15 @@ _Disclaimer: Loading times might be slow because the service is asleep by defaul
 
 ## Table of contents:
 
-- Getting All Entire Toolbox
+- Getting Entire Toolbox
 - Getting Single Type of Tool
 - Getting Type Of Tool Based on Subtype
-- Acquiring Randomized Type of Tool
+- Getting Randomized Type of Tool
 - Contributing
 
 ## API Documentation
 
-### Get Entire Toolbox
+### Getting Entire Toolbox
 
 Gets entire toolbox of items from database in JSON format.
 
@@ -45,7 +45,7 @@ https://guitarist-toolbox.herokuapp.com/music-info/all
 	]
 ```
 
-### Get Single Type of Tool
+### Getting Single Type of Tool
 
 Gets toolbox items from the database based on type.
 
@@ -98,7 +98,7 @@ https://guitarist-toolbox.herokuapp.com/music-info/times/<type>
 	}
 ```
 
-### Acquiring Randomized Type of Tool
+### Getting Randomized Type of Tool
 
 Gets a single toolbox item based on type and random parameter.
 
