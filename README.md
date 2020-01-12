@@ -27,7 +27,7 @@ https://guitarist-toolbox.herokuapp.com/music-info/all
 #### Response
 
 ```ts
-    [
+	[
   		{
   			"Chords":string
   		}, ...
@@ -42,7 +42,7 @@ https://guitarist-toolbox.herokuapp.com/music-info/all
   			"Time Signatures": string
   			"Type": string
   		}
-	  ]
+	]
 ```
 
 ### Get Single Type of Tool
