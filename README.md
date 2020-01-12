@@ -1,68 +1,67 @@
 # Guitarist-Toolbox API
-_Currently down due to new OS setup. Will be up ASAP!_
 
-This is the Guitarist-Toolbox API service.  I built this public API originally for a guitar song writing application idea, but I felt it would be useful to allow everyone to use it as well! 
+This is the Guitarist-Toolbox API service.  I built this API originally for a guitar song writing application idea, but I felt it would be useful to allow fellow guitarist to use it as well! Down below is documentation for this API.
+
+_Disclaimer: Loading times might be slow because the service is asleep by default and must waken up._
 
 ## Table of contents:
 
 - Getting All Entire Toolbox
 - Getting Single Type of Tool
-- Advanced Queries of Tools
-- Acquiring Randomized Type of Tool (under contruction)
+- Getting Type Of Tool Based on Subtype
+- Acquiring Randomized Type of Tool
 - Contributing
 
-## API Documentation 
+## API Documentation
 
 ### Get Entire Toolbox
 
-Returns entire toolbox of items from database in JSON format. 
+Gets entire toolbox of items from database in JSON format.
 
 #### Request
 
 ```http
-https://Guitarist-Toolbox.herokudns.com/music-info/all
+https://guitarist-toolbox.herokuapp.com/music-info/all
 ```
 
 #### Response
 
 ```ts
-   { 
-	"Whole Toolbox": [
-		{
-			"Chord":string
-		}, ...
-		{
-			"Scale": string
-		}, ...
-		{
-			"Technique": string
-			"Type": string
-		}, ...
-		{
-			"Time Signature": string
-			"Type": string
-		}
-	   ]
-     }
+    [
+  		{
+  			"Chords":string
+  		}, ...
+  		{
+  			"Scales": string
+  		}, ...
+  		{
+  			"Techniques": string
+  			"Type": string
+  		}, ...
+  		{
+  			"Time Signatures": string
+  			"Type": string
+  		}
+	  ]
 ```
 
 ### Get Single Type of Tool
 
-Returns a column from the toolbox based in the following parameters. 
+Gets toolbox items from the database based on type.
 
 #### Parameters
 
 | param    | type     | Description                                                  |
 | :------- | :------- | :----------------------------------------------------------- |
-| chord  | `String` | Filters based on chord progression        |
-| scale | `String` | Filters based on scale       |
-| technique    | `String`    | Filters based on guitar technique |
-|  time  | `String`    | Filters based on time signature                 |
+| chords  | `String` | Filters based on chord progression        |
+| scales | `String` | Filters based on scale       |
+| techniques    | `String`    | Filters based on guitar technique |
+|  times  | `String`    | Filters based on time signature                 |
 
 #### Request
 
 ```http
-https://Guitarist-Toolbox.herokudns.com/music-info/music-info/chord
+https://guitarist-toolbox.herokuapp.com/music-info/chords
 ```
 
 #### Response
@@ -73,21 +72,21 @@ https://Guitarist-Toolbox.herokudns.com/music-info/music-info/chord
 	}
 ```
 
-### Advanced Queries of Tools
+### Getting Specific Type Of Tool
 
-Some columns have more than one parameter that be selected. Currently technique and time signature have two extra option parameters for querying. Returns a column from the toolbox based in the following parameters. 
+Gets toolbox items by type and subtype parameters. Currently technique and time signature have two optional subtype parameters for querying.
 
 #### Parameters
 
-| param    | type     | Description                                                  |
+| param    | subtype     | Description                                                  |
 | :------- | :------- | :----------------------------------------------------------- |
-| technique/tech_type/<type\>  | `String` | Filters based on technique type: electric, acoustic, both        |
-| time/time_type/<type\>  | `String` | Filters based on time signature type: common, compound, complex     |
+| techniques/<type\>  | `String` | Filters based on technique type: electric, acoustic, both        |
+| times/<type\>  | `String` | Filters based on time signature type: common, compound, complex     |
 
 #### Request
 
 ```http
-https://Guitarist-Toolbox.herokudns.com/music-info/music-info/time/tech_type/<type>
+https://guitarist-toolbox.herokuapp.com/music-info/times/<type>
 ```
 
 #### Response
@@ -98,6 +97,27 @@ https://Guitarist-Toolbox.herokudns.com/music-info/music-info/time/tech_type/<ty
 		"Type": string
 	}
 ```
+
+### Acquiring Randomized Type of Tool
+
+Gets a single toolbox item based on type and random parameter.
+
+#### Request
+
+```http
+https://guitarist-toolbox.herokuapp.com/music-info/techniques/random
+```
+
+#### Response
+
+```ts
+	{
+		"Technique":string,
+		"Type": string
+	}
+```
+
+
 ## Contributing
 
-All feedback and contributions are welcome!
+Please message anything that I might have missed or should add from any of the tools' sections. All feedback, and contributions are welcome!
