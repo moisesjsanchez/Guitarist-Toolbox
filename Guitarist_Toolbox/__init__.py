@@ -2,14 +2,14 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_cors import CORS
-from Guitarist_Toolbox.config import DevelopmentConfig
+from Guitarist_Toolbox.config import ProductionConfig
 
 db = SQLAlchemy()
 migrate = Migrate()
 cors = CORS()
 
 
-def create_app(config_class=DevelopmentConfig):
+def create_app(config_class=ProductionConfig):
     app = Flask(__name__)
     app.config.from_object(config_class)
     db.init_app(app)
